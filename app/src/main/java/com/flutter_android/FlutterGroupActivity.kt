@@ -1,10 +1,10 @@
 package com.flutter_android
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
+import java.util.*
 
 class FlutterGroupActivity : FlutterActivity(), EngineBindingsDelegate {
 
@@ -31,8 +31,15 @@ class FlutterGroupActivity : FlutterActivity(), EngineBindingsDelegate {
         return engineBindings.engine
     }
 
-    override fun onNext() {
-        val flutterIntent = Intent(this, MainActivity::class.java)
-        startActivity(flutterIntent)
+    override fun push(argument: Objects) {
+        TODO("Not yet implemented")
+    }
+
+    override fun pop(argument: Objects) {
+        TODO("Not yet implemented")
+    }
+
+    override fun even(argument: Objects) {
+        TODO("Not yet implemented")
     }
 }
