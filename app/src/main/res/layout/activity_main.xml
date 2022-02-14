@@ -2,13 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
+
+    <include layout="@layout/title_bar" />
+
+    <include layout="@layout/count_view" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/to_native_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="原生Other页" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/to_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="flutter 首页" />
 
     <androidx.appcompat.widget.AppCompatButton

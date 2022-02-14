@@ -1,26 +1,42 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_model/page/goods_detail_page.dart';
-import 'package:flutter_model/page/goods_list_page.dart';
-import 'package:flutter_model/page/home_page.dart';
+import 'dart:ui';
 
-void main() => runApp(const MyApp());
+import 'package:flutter/material.dart';
+import 'package:flutter_model/logger/logger_utils.dart';
+import 'package:flutter_model/routes/app_pages.dart';
+import 'package:flutter_model/services/global_service.dart';
+import 'package:get/get.dart';
+
+/// 初始化服务
+Future initServices() async {
+  await Get.putAsync(() => GlobalService().init());
+}
+
+void main() async {
+  //初始化服务
+  await initServices();
+
+  //获取默认路由
+  String initRoute = window.defaultRouteName;
+  //启动app
+  runApp(MyApp(initRoute: initRoute));
+}
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final String initRoute;
+
+  const MyApp({
+    Key? key,
+    required this.initRoute,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      // initialRoute: '/',
-      routes: {
-        '/': (context) => const HomePage(),
-        '/goods_list': (context) => const GoodsListPage(),
-        '/goods_detail': (context) => const GoodsDetailPage(),
-      },
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      enableLog: true,
+      logWriterCallback: Logger.write,
+      initialRoute: initRoute,
+      getPages: AppPages.routes,
     );
   }
 }

@@ -1,8 +1,6 @@
 package com.flutter_android;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +8,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
+
+public class OtherActivity extends Activity implements View.OnClickListener {
     Context context = this;
 
     ImageView title_bar_back;
@@ -29,10 +30,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void initView() {
-        title_bar_back=findViewById(R.id.title_bar_back);
-        title_bar_back.setVisibility(View.GONE);
-        title_bar_title=findViewById(R.id.title_bar_title);
-        title_bar_title.setText("原生首页");
+        title_bar_back = findViewById(R.id.title_bar_back);
+        title_bar_back.setOnClickListener(this);
+        title_bar_title = findViewById(R.id.title_bar_title);
+        title_bar_title.setText("原生Other");
 
         toNativeOther = findViewById(R.id.to_native_other);
         toHome = findViewById(R.id.to_home);
@@ -48,16 +49,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         Intent intent = new Intent();
         int viewId = view.getId();
-        if (viewId == R.id.to_native_other) {
-            intent.setClassName(context,"com.flutter_android.OtherActivity");
+        if (viewId == R.id.title_bar_back) {
+            finish();
+            return;
+        } else if (viewId == R.id.to_native_other) {
+            intent.setClassName(context, "com.flutter_android.OtherActivity");
         } else if (viewId == R.id.to_home) {
-            intent.setClassName(context,"com.flutter_android.FlutterGroupActivity");
+            intent.setClassName(context, "com.flutter_android.FlutterGroupActivity");
             intent.putExtra("initRoute", "/home");
         } else if (viewId == R.id.to_goods_list) {
-            intent.setClassName(context,"com.flutter_android.FlutterGroupActivity");
+            intent.setClassName(context, "com.flutter_android.FlutterGroupActivity");
             intent.putExtra("initRoute", "/goodsList");
         } else if (viewId == R.id.to_goods_detail) {
-            intent.setClassName(context,"com.flutter_android.FlutterGroupActivity");
+            intent.setClassName(context, "com.flutter_android.FlutterGroupActivity");
             intent.putExtra("initRoute", "/goodsDetail");
         }
         startActivity(intent);

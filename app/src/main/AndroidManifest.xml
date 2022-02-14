@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.flutter_android_aar">
+    package="com.flutter_android">
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Flutter_android_aar">
+        android:theme="@style/Theme.Flutter_android">
         <activity
             android:name="com.flutter_android.MainActivity"
             android:exported="true">
@@ -19,12 +20,14 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".OtherActivity" />
+        <activity android:name=".FlutterGroupActivity" />
 
         <activity
             android:name="io.flutter.embedding.android.FlutterActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
-            android:theme="@style/Theme.Flutter_android_aar"
+            android:theme="@style/Theme.Flutter_android"
             android:windowSoftInputMode="adjustResize" />
     </application>
 
