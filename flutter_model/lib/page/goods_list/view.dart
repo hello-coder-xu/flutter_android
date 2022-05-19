@@ -15,6 +15,7 @@ class GoodsListPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('flutter商品列表'),
         centerTitle: true,
+        backgroundColor: Colors.red,
       ),
       body: Center(
         child: Column(
